@@ -22,9 +22,6 @@ export function useChat() {
         body: JSON.stringify({ message: text }),
       });
 
-      // BUG: We wait for the full JSON response. 
-      // The user will see a spinner for 3+ seconds, then the text appears all at once.
-      // TASK: Refactor this to handle a stream of events.
       const data = await response.json();
 
       setMessages(prev => [...prev, { role: 'assistant', content: data.message }]);

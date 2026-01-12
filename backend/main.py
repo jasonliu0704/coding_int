@@ -19,7 +19,6 @@ app.add_middleware(
 
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest):
-    # BUG: This waits for the entire agent execution (including 3s sleep) before returning anything
     response_text = run_agent(request.message)
     return {"message": response_text}
 

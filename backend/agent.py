@@ -17,7 +17,6 @@ def get_agent_executor():
     
     agent = create_tool_calling_agent(llm, tools, prompt)
     
-    # BUG: return_intermediate_steps=False by default, so we can't see thoughts easily
     executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
     return executor
 
@@ -27,6 +26,5 @@ def run_agent(message: str):
     """
     executor = get_agent_executor()
     
-    # Simple invoke, no streaming
     result = executor.invoke({"input": message})
     return result["output"]
