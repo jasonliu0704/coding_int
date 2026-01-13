@@ -1,11 +1,10 @@
 import time
+from langchain.tools import tool
 
+@tool
 def web_search(query: str) -> str:
     """Performs a web search to find information on the internet.
     Use this tool when you need to verify facts or find up-to-date information.
-    
-    Args:
-        query: The search query string.
     """
     # Simulate a search delay to make the "waiting" painful in the UI
     time.sleep(3.0) 
