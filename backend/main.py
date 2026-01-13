@@ -3,6 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from backend.agent import run_agent
 from backend.schemas import ChatRequest
 import logging
+from dotenv import load_dotenv
+
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
