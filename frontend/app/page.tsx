@@ -1,10 +1,10 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 import { useChat } from './hooks/useChat';
-// import ThoughtTrace from './components/ThoughtTrace'; // Uncomment when implemented
+import ThoughtTrace from './components/ThoughtTrace';
 
 export default function Home() {
-  const { messages, sendMessage, loading } = useChat();
+  const { messages, sendMessage, loading, thoughts } = useChat();
   const [input, setInput] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -35,13 +35,7 @@ export default function Home() {
           </div>
         ))}
 
-        {loading && (
-          <div style={{ color: '#94a3b8', fontStyle: 'italic', paddingLeft: '1rem' }}>
-            Agent is thinking... (This can take a while)
-          </div>
-        )}
-
-        {/* TASK: Render the ThoughtTrace component here when active */}
+        {loading && <ThoughtTrace thoughts={thoughts} isLoading={loading} />}
 
         <div ref={messagesEndRef} />
       </div>
